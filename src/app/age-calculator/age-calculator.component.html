@@ -1,0 +1,84 @@
+<div class="main">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="container-dates">
+      <div class="container-dates-items">
+        <label [ngClass]="getClass()">day</label>
+        <input
+          [ngClass]="getClass()"
+          type="number"
+          placeholder="DD"
+          formControlName="day"
+          id="day"
+        />
+        <div *ngIf="profileForm.invalid && profileForm.dirty">
+          <span *ngIf="getErrors('day', 'required')">
+            *This field is required
+          </span>
+          <span *ngIf="getErrors('day', 'max')"> *Must be a valid day </span>
+          <span *ngIf="getErrors('day', 'min')"> *Must be a valid day </span>
+          <span
+            *ngIf="profileForm.errors?.['identityRevealed'] && !( profileForm.controls['day'].errors?.['min'] )"
+          >
+            *Must be a valid date
+          </span>
+        </div>
+      </div>
+      <div class="container-dates-items">
+        <label [ngClass]="getClass()" for="">month</label>
+        <input
+          [ngClass]="getClass()"
+          type="number"
+          placeholder="MM"
+          formControlName="month"
+        />
+
+        <div *ngIf="profileForm.invalid && profileForm.dirty">
+          <span *ngIf="getErrors('month', 'required')">
+            *This field is required
+          </span>
+          <span *ngIf="getErrors('month', 'max')">
+            *Must be a valid month
+          </span>
+          <span *ngIf="getErrors('month', 'min')">
+            *Must be a valid month
+          </span>
+        </div>
+      </div>
+      <div class="container-dates-items">
+        <label [ngClass]="getClass()">year</label>
+        <input
+          [ngClass]="getClass()"
+          type="number"
+          placeholder="YYYY"
+          formControlName="year"
+          required
+        />
+
+        <div *ngIf="profileForm.invalid && profileForm.dirty">
+          <span *ngIf="getErrors('year', 'required')">
+            *This field is required
+          </span>
+          <span *ngIf="getErrors('year', 'max')"> *Must be in the past </span>
+        </div>
+      </div>
+    </div>
+    <div class="container-icon">
+      <hr />
+      <button class="container-icon-image">
+        <img src="./assets/images/icon-arrow.svg" alt="arrow button" />
+      </button>
+    </div>
+  </form>
+
+  <div class="container-time">
+    <div class="container-time-item">
+      <span class="container-time-item-properties">{{ years }}</span> years
+    </div>
+    <div class="container-time-item">
+      <span class="container-time-item-properties">{{ months }}</span> months
+    </div>
+    <div class="container-time-item">
+      <span class="container-time-item-properties">{{ days }}</span> days
+    </div>
+  </div>
+</div>
