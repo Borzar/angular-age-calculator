@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Links
 
-Solution URL: [Link APP](https://main.d2dtgwaxbumtaq.amplifyapp.com)
+Solution URL: [Link APP](https://angular-age-calculator-ten.vercel.app/)
 
 ### Screenshot
 
